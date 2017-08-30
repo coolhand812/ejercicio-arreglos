@@ -3,6 +3,9 @@ public class Grupo
     private String nomMateria;
     private Estudiante[] estudiantes;
     
+    /**
+     * Constructor de la clase Grupo.
+     */
     public Grupo(int totalEstudiantes, String nomMateria)
     {
         estudiantes = new Estudiante[totalEstudiantes];
@@ -29,7 +32,7 @@ public class Grupo
     }
     
     /**
-     * Buswca un espacio disponible en el arreglo.
+     * Busca un espacio disponible en el arreglo.
      * @return regresa la primer posicion nula dentro del arreglo.
      */
     private int buscaEspacioDisponible()
@@ -63,15 +66,23 @@ public class Grupo
             return true; // el estudiante fue inscrito.
     }
     
-    public void darBaja(int claveEstudiante)
+    /**
+     * Da de baja a un estudiante del grupo.
+     * @param claveEstudiante Es el objeto clave unica para dar de baja.
+     * @return Regresa verdadero solo si el estudiante fur dado de baja o 
+     *          falso en caso de que no se encontro el estudiante.
+     */
+    public boolean darBaja(int claveEstudiante)
     {
         //Buscar el estudiante con la clave dada
         // y asignarle un null
-        /*
-        for(int i=0; i<estudiantes.length;i++){
-            if(claveEstudiante == Estudiante.dimeClave()){
-                estudiantes[i]= null;
-            }
-        }*/
+        int existe = this.buscarEstudiante(claveEstudiante);
+        int cont=0;
+        if(existe == -1){
+            cont = cont+1;
+            return false; // el estudiante no se encontro.
+        }
+        estudiantes[cont] = null;
+        return true; // el estudiante fue dado de baja.
     }
 }
