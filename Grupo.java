@@ -18,9 +18,11 @@ public class Grupo
     {
         for(int i=0; i<estudiantes.length;i++)
         {
-            if(estudiantes[i].dimeClave() == claveEstudiante)
-            {
-                return i;
+            if(estudiantes[i] != null){
+                if(estudiantes[i].dimeClave() == claveEstudiante)
+                {
+                    return i;
+                }
             }
         }
         return -1;
