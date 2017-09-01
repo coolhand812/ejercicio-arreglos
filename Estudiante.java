@@ -18,4 +18,9 @@ public class Estudiante
     {
         return clave;
     }
+    
+    public String dimeNombre()
+    {
+        return nombre;
+    }
 }

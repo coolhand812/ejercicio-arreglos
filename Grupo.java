@@ -1,3 +1,8 @@
+/**
+ * Esta clase controla un grupo de estudiantes de cualquier materia.
+ * @Joe Diaz
+ * @Version 1.0
+ */
 public class Grupo
 {
     private String nomMateria;
@@ -23,6 +28,27 @@ public class Grupo
         {
             if(estudiantes[i] != null){
                 if(estudiantes[i].dimeClave() == claveEstudiante)
+                {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+    
+    /**
+     * Busca un estudiante por medio de su nombre.
+     * @param nomEstudiante Parametro que representa el nombre del 
+     *        estudiante a buscar.
+     * @return Regresa la posicion del estudiante en el arreglo 
+     *        o -1 si no existe.
+     */
+    private int buscarEstudiante(String nomEstudiante)
+    {
+        for(int i=0; i<estudiantes.length;i++)
+        {
+            if(estudiantes[i] != null){
+                if(estudiantes[i].dimeNombre() == nomEstudiante)
                 {
                     return i;
                 }
@@ -78,7 +104,27 @@ public class Grupo
         // y asignarle un null
         int existe = this.buscarEstudiante(claveEstudiante);
         int cont=0;
-        if(existe == -1){
+        if(existe == -1)
+        {
+            cont = cont+1;
+            return false; // el estudiante no se encontro.
+        }
+        estudiantes[cont] = null;
+        return true; // el estudiante fue dado de baja.
+    }
+    
+    /**
+     * Da de baja a un estudiante del grupo por nombre.
+     * @param nomEstudiante Es el objeto clave unica para dar de baja.
+     * @return Regresa verdadero solo si el estudiante fue dado de baja o 
+     *          falso en caso de que no se encontro el estudiante.
+     */
+    public boolean darBaja(String nomEstudiante)
+    {
+        int existe = this.buscarEstudiante(nomEstudiante);
+        int cont=0;
+        if(existe == -1)
+        {
             cont = cont+1;
             return false; // el estudiante no se encontro.
         }
